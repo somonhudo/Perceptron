@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Programando I.A. desde o Rascunho</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap" />
+    <style>
+a{cursor:pointer;color:#38bdf8;font-weight:bold;text-decoration:none;background:38bdf8;border:1px solid #334155;padding:3px 8px;border-radius:6px;}
+b{color:#facc15;font-size:18px;}
+body{font-family:Inter;background:#171717;color:#bebebe;margin:20px;}
+h1{margin:22px 0px -10px 0px;color:#bebebe;}
+p{color:#facc15;}
+h3{border-left:6px dashed #a3e635;color:#a3e635;padding-left:8px;font-size:24px;}
+header{background:#262626;cursor:pointer;border-radius:6px;padding:12px 32px 24px;}
+option{background:#262626;}
+button{background:#262626;color:#38bdf8;font-weight:bold;padding:10px;border-radius:6px;cursor:pointer;}
+#select{background:#262626;color:#a3e635;padding:10px;border-radius:6px;}
+select{background:transparent;color:#a3e635;padding:10px;cursor:pointer;border:none;margin-right:8px;}
+.badge{background:#303030;padding:8px;border-radius:6px;font-size:12px;}
+.card{width:300px;padding:20px;margin-right:20px;margin-bottom:20px;display:inline-block;border-radius:6px;background:#262626;border-radius:12px;}
+.card p{text-align:left;padding-bottom:14px;color:#94a3b8;}
+.links{text-align:right;}
+.links a{text-decoration:none;color:#a3e635;padding:8px 20px;border-radius:6px;border:1px solid #a3e635;font-family:Courier;}
+.title{text-align:left;font-size:20px;padding-bottom:8px;display:flex;align-items:center;cursor:pointer;border-bottom:1px solid #334155;color:#facc15;}
+#main{padding-left:20px;padding-right:20px;}
+button{border:none;background:#262626;color:#38bdf8;}
+#conteudo{font-family:Courier;}
+#indice{line-height:30px;}
+#home{position:fixed;bottom:0px;right:20px;padding:18px;cursor:pointer;background-color:#a3e635;color:#0f172a;}
+#voltar{position:fixed;bottom:0px;right:112px;padding:18px;cursor:pointer;background-color:#a3e635;color:#0f172a;}
+    </style>
+  </head>
+
+  <body>
+    <header onclick="location.href='index.html';">
+        <h1>Programando IA Desde o Rascunho</h1>
+        <p>Desde o zero. Tutorial prático sobre como começar.</p>
+    </header><br>
+
+    <div id="main"></div>
+
+<script>
+main='';
+lng=location.href.split('=')[1];
+if(location.href.split('=')[1])lng=location.href.split('=')[1].replace('&licao','');
+licao=false;
+if(location.href.split('=')[2])licao=location.href.split('=')[2].replace('licao&licao=','licao=');
+if(!lng){
+	document.getElementById('main').style["padding-left"]="0px";
+	main+="<div id=select><select onchange=\"location.href=this.value;\">";
+	main+="<option value=index.html>Conheça o Tutorial</option>";
+	main+="<option value=index.html?lng=tinyCC>Usando o tinyCC</option>";
+	main+="<option value=index.html?lng=nodeJs>Usando o NodeJs</option>";
+	main+="<option value=index.html?lng=python>Usando Python</option>";
+	main+="</select></div><br>";
+	main+="<article class=card><div class=title onclick=\"location.href='index.html?lng=tinyCC';\"><span class=badge>C</span>&nbsp;&nbsp;Seguir usando o tinyCC</div><p>Tiny C Compiler (TCC ou tinyCC) é um compilador C pequeno. Ele é conhecido por ser leve e rápido.</p><div class=links><a href=index.html?lng=tinyCC>Tutorial</a>&nbsp; <a href=https://www.google.com/search?q=tinyCC+download target=_blank>Download</a></div></article>";
+	main+="<article class=card><div class=title onclick=\"location.href='index.html?lng=nodeJs';\"><span class=badge>JS</span>&nbsp;&nbsp;Seguir usando o Node.js</div><p>Node.js é um ambiente de desenvolvimento que permite que devs executem código javascript.</p><div class=links><a href=index.html?lng=nodeJs>Tutorial</a>&nbsp; <a href=https://www.google.com/search?q=nodeJs+download target=_blank>Download</a></div></article>";
+	main+="<article class=card><div class=title onclick=\"location.href='index.html?lng=python';\"><span class=badge>Py</span>&nbsp;&nbsp;Seguir usando o Python</div><p>Python é uma linguagem de programação com uma filosofia que enfatiza a legibilidade do código.</p><div class=links><a href=index.html?lng=python>Tutorial</a>&nbsp; <a href=https://www.google.com/search?q=python+download target=_blank>Download</a></div></article>";
+}else{
+	if(!licao){
+		main+="<div id=select><select onchange=\"location.href=this.value;\">";
+		main+="<option value=index.html?lng=tinyCC"+(lng=="tinycc"?" selected":"")+">TinyCC</option>";
+		main+="<option value=index.html?lng=nodeJs"+(lng=="nodeJs"?" selected":"")+">NodeJs</option>";
+		main+="<option value=index.html?lng=python"+(lng=="python"?" selected":"")+">Python</option>";
+		main+="<option value=https://somonhudo.github.io/Procedimentos>Outros Tutoriais</option>";
+		main+="</select></div><br>";
+		main+="<div id=indice>";
+		main+="* <a href=index.html?lng="+lng+"&licao=1>Probleminha</a> (aproximadamente 25 linhas de código)<br>";
+		main+="* <a href=index.html?lng="+lng+"&licao=2>Bias</a> (aproximadamente 20 linhas de código)<br>";
+		main+="* <a href=index.html?lng="+lng+"&licao=3>Peso e Altura</a> (aproximadamente 40 + 40 linhas de código)<br>";
+		main+="* <a href=index.html?lng="+lng+"&licao=4>Testes</a> (aproximadamente 35 linhas de código)<br>";
+		main+="* <a href=index.html?lng="+lng+"&licao=5>Imagens</a><br>";
+		main+="* <a href=index.html?lng="+lng+"&licao=6>.jpg</a> (aproximadamente 400 linhas de código)<br>";
+		main+="* <a href=index.html?lng="+lng+"&licao=7>Perceptron</a> (aproximadamente 25 linhas de código)<br>";
+		main+="* <a href=index.html?lng="+lng+"&licao=8>Generativa</a><br>";
+		main+="* <a href=index.html?lng="+lng+"&licao=9>Próximos Passos</a></div><br><br>";
+	}
+	else{
+		if(lng=='tinyCC')extensao='c';
+		if(lng=='nodeJs')extensao='js';
+		if(lng=='python')extensao='py';
+		if(licao=='1') main+="<h3>&nbsp;Problema da Laranja</h3><div id=conteudo>Temos uma balança que nos apresenta o peso das frutas.<br><br>As laranjas pesam entre 0.082 kg e 0.092 kg<br><br>Seres humanos reconhecem facilmente uma laranja.<br>Não precisa nem pesar.<br><br>Mas essa I.A. tem apenas esse sensor.<br><br>Um programador poderia usar um <b>IF</b> para testar se a fruta está entre esses valores.<br><br>Mas a questão é treinar a I.A. para <b>ela</b> chegar a esses valores.<br><br>Por enquanto vamos programar algo para gerar 50 valores aleatórios.<br>Cada valor tem um peso e um bool.<br><b>25 desses valores</b> sao frutas quaisquer e têm peso qualquer e bool L = false;<br><b>25 desses valores</b> sao laranjas e têm peso entre 0.082 e 0.092 e bool L = true;<br><br>No próximo módulo a I.A. vai percorrrer várias vezes esses valores e vai <b>inferir</b> os limites 0.082 e 0.092<br><br>Os limites serão encontrados pela I.A. (ao invés de ser dado pelo programador)<br><br>Nos outros módulos o problema vai crescer (ganhar complexidade)<br><br><a target=_blank href=https://github.com/somonhudo/Perceptron/blob/main/"+lng+"/geraentradas1."+extensao+">geraentradas1."+extensao+"</a></div>";
+		if(licao=='2') main+="<h3>&nbsp;Bias</h3><div id=conteudo>Bias é o valor limite que serve para identificar as laranjas.<br><br>A gente já sabe que a faixa de peso das laranjas é entre 0.082 e 0.092<br>Mas a nossa I.A. ainda não sabe.<br><br>Ela vai testar várias vezes várias frutas e calibrar o seu <b>bias</b>.<br><br>Ela está começando a aprender.<br><br><a target=_blank href=https://github.com/somonhudo/Perceptron/blob/main/"+lng+"/treina1."+extensao+">treina1."+extensao+"</a></div>";
+		if(licao=='3') main+="<h3>&nbsp;Peso e Altura</h3><div id=conteudo>Se fosse o caso de nossa I.A. ter dois sensores a solução apresentada até agora poderia falhar.<br><br>Para resolver a questão com múltiplos valores na entrada usa-se redes neurais com camadas.<br><br>Na continuidade do desenvolvimento dessa I.A. vamos encontrar um padrão entre muitos sensores.<br><br><a target=_blank href=https://github.com/somonhudo/Perceptron/blob/main/"+lng+"/geraentradas2."+extensao+">geraentradas2."+extensao+"</a><br><br><a target=_blank href=https://github.com/somonhudo/Perceptron/blob/main/"+lng+"/treina2."+extensao+">treina2."+extensao+"</a></div>";
+		if(licao=='4') main+="<h3>&nbsp;Testes</h3><div id=conteudo>A nossa i.a. identificou um padrão.<br><br>Agora com um <b>if</b> é possível determinar se a fruta é uma laranja.<br><br><a target=_blank href=https://github.com/somonhudo/Perceptron/blob/main/"+lng+"/testes1."+extensao+">testes1."+extensao+"</a></div>";
+		if(licao=='5') main+="<h3>&nbsp;Imagens</h3><div id=conteudo>Já está no ponto de começar a procurar padrões em fontes mais realistas.<br><br>O plano é gerar varias imagens de mesmo tamanho com fundo branco e uma figura geometrica impressa.<br><br>A inteligência artificial deverá reconhecer se no arquivo está impresso um quadrado ou um círculo.</div>";
+		if(licao=='6') main+="<h3>&nbsp;.jpg</h3><div id=conteudo>É possível gerar as imagens requeridas com programação.<br><br><a target=_blank href=https://github.com/somonhudo/Perceptron/blob/main/"+lng+"/geraentradas3."+extensao+">geraentradas3."+extensao+"</a></div>";
+		if(licao=='7') main+="<h3>&nbsp;Perceptron</h3><div id=conteudo>O arquivo <a target=_blank href=https://github.com/somonhudo/Perceptron/blob/main/"+lng+"/treina3."+extensao+">treina3."+extensao+"</a> fatia cada uma das imagens em vários pedacinhos.<br>Cada pedacinho é um número.<br><br>Esses números são tratados como entradas.<br>O perceptron procura um padrão neles.<br><br>Com o bias determinado basta um <b>if</b><br>(uma comparação numérica)<br>para determinar se na imagem está impresso um círculo.<br><br><a target=_blank href=https://github.com/somonhudo/Perceptron/blob/main/"+lng+"/testes2."+extensao+">testes2."+extensao+"</a></div>";
+		if(licao=='8') main+="<h3>&nbsp;Generativa</h3><div id=conteudo>Com a i.a. treinada é possivel tentar algo a mais:<br>Um ciclo de geração de bytes aleatórios sendo testados até que se enquadre nos limites definidos.</div>";
+		if(licao=='9') main+="<h3>&nbsp;Próximos Passos</h3><div id=conteudo>Não é tão simples, mas deve ser possível gerar uma inteligência artificial que diferencie símbolos ou letras em arquivos jpg</div>";
+		main+="<br>";
+		if(licao>1)main+="<button onclick=\"location.href='index.html?lng="+lng+"&licao="+(parseInt(licao)-1)+"';\">&lt;</button>&nbsp;";
+		main+="<select onchange=\"location.href=this.value;\"><option value=index.html?lng=tinyCC&licao="+licao+""+(lng=="tinycc"?" selected":"")+">TinyCC</option>";
+		main+="<option value=index.html?lng=nodeJs&licao="+licao+""+(lng=="nodeJs"?" selected":"")+">NodeJs</option>";
+		main+="<option value=index.html?lng=python&licao="+licao+""+(lng=="python"?" selected":"")+">Python</option></select>";
+		if(licao<9)main+="&nbsp;<button onclick=\"location.href='index.html?lng="+lng+"&licao="+(parseInt(licao)+1)+"';\">></button>";
+		main+="<span id=voltar onclick=\"location='index.html?lng="+lng+"';\">voltar</span><span id=home onclick=\"location='index.html';\">home</span>";
+
+
+	}
+}
+document.getElementById('main').innerHTML = main;
+</script>
+</html>
