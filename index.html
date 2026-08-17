@@ -6,29 +6,29 @@
     <title>Programando I.A. desde o Rascunho</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap" />
     <style>
-a{cursor:pointer;color:#38bdf8;font-weight:bold;text-decoration:none;background:38bdf8;border:1px solid #334155;padding:3px 8px;border-radius:6px;}
-b{color:#facc15;font-size:18px;}
-body{font-family:Inter;background:#171717;color:#bebebe;margin:20px;}
-h1{margin:22px 0px -10px 0px;color:#bebebe;}
-p{color:#facc15;}
-h3{border-left:6px dashed #a3e635;color:#a3e635;padding-left:8px;font-size:24px;}
-header{background:#262626;cursor:pointer;border-radius:6px;padding:12px 32px 24px;}
-option{background:#262626;}
-button{background:#262626;color:#38bdf8;font-weight:bold;padding:10px;border-radius:6px;cursor:pointer;}
-#select{background:#262626;color:#a3e635;padding:10px;border-radius:6px;}
-select{background:transparent;color:#a3e635;padding:10px;cursor:pointer;border:none;margin-right:8px;}
-.badge{background:#303030;padding:8px;border-radius:6px;font-size:12px;}
-.card{width:300px;padding:20px;margin-right:20px;margin-bottom:20px;display:inline-block;border-radius:6px;background:#262626;border-radius:12px;}
-.card p{text-align:left;padding-bottom:14px;color:#94a3b8;}
+a{cursor:pointer;color:#2a2a2a;font-weight:bold;text-decoration:none;border:1px solid #4b4b4b;padding:3px 8px;border-radius:6px;}
+b{color:#0b0b0b;font-size:18px;}
+body{font-family:Inter;color:#494949;margin:20px;}
+h1{margin:22px 0px -10px 0px;}
+p{color:#0b0b0b;}
+h3{border-left:6px dashed #3d3d3d;color:#3d3d3d;padding-left:8px;font-size:24px;}
+header{border:2px dashed #c0c0c0;cursor:pointer;border-radius:6px;padding:12px 32px 24px;}
+option{border:2px dashed #c0c0c0;}
+button{border:2px dashed #c0c0c0;color:#2a2a2a;font-weight:bold;padding:10px;border-radius:6px;cursor:pointer;}
+#select{border:2px dashed #c0c0c0;color:#3d3d3d;padding:10px;border-radius:6px;}
+select{background:transparent;color:#3d3d3d;padding:10px;cursor:pointer;border:none;margin-right:8px;}
+.badge{background:#303030;padding:8px;border-radius:6px;font-size:12px;color:#ffffff;}
+.card{width:300px;padding:20px;margin-right:20px;margin-bottom:20px;display:inline-block;border-radius:6px;border:2px dashed #c0c0c0;border-radius:12px;}
+.card p{text-align:left;padding-bottom:14px;}
 .links{text-align:right;}
-.links a{text-decoration:none;color:#a3e635;padding:8px 20px;border-radius:6px;border:1px solid #a3e635;font-family:Courier;}
-.title{text-align:left;font-size:20px;padding-bottom:8px;display:flex;align-items:center;cursor:pointer;border-bottom:1px solid #334155;color:#facc15;}
-#main{padding-left:20px;padding-right:20px;}
-button{border:none;background:#262626;color:#38bdf8;}
+.links a{text-decoration:none;color:#3d3d3d;padding:8px 20px;border-radius:6px;border:1px solid #3d3d3d;font-family:Courier;}
+.title{text-align:left;font-size:20px;padding-bottom:8px;display:flex;align-items:center;cursor:pointer;border-bottom:1px solid #4b4b4b;color:#0b0b0b;}
+#main{padding-right:20px;}
+button{border:none;border:2px dashed #c0c0c0;color:#2a2a2a;}
 #conteudo{font-family:Courier;}
 #indice{line-height:30px;}
-#home{position:fixed;bottom:0px;right:20px;padding:18px;cursor:pointer;background-color:#a3e635;color:#0f172a;}
-#voltar{position:fixed;bottom:0px;right:112px;padding:18px;cursor:pointer;background-color:#a3e635;color:#0f172a;}
+#home{position:fixed;bottom:0px;right:20px;padding:18px;cursor:pointer;background-color:#555555;color:#d8d8d8;}
+#voltar{position:fixed;bottom:0px;right:112px;padding:18px;cursor:pointer;background-color:#555555;color:#d8d8d8;}
     </style>
   </head>
 
@@ -47,7 +47,6 @@ if(location.href.split('=')[1])lng=location.href.split('=')[1].replace('&licao',
 licao=false;
 if(location.href.split('=')[2])licao=location.href.split('=')[2].replace('licao&licao=','licao=');
 if(!lng){
-	document.getElementById('main').style["padding-left"]="0px";
 	main+="<div id=select><select onchange=\"location.href=this.value;\">";
 	main+="<option value=index.html>Conheça o Tutorial</option>";
 	main+="<option value=index.html?lng=tinyCC>Usando o tinyCC</option>";
@@ -77,6 +76,7 @@ if(!lng){
 		main+="* <a href=index.html?lng="+lng+"&licao=9>Próximos Passos</a></div><br><br>";
 	}
 	else{
+		document.getElementById('main').style["padding-left"]="20px";
 		if(lng=='tinyCC')extensao='c';
 		if(lng=='nodeJs')extensao='js';
 		if(lng=='python')extensao='py';
@@ -95,7 +95,7 @@ if(!lng){
 		main+="<option value=index.html?lng=nodeJs&licao="+licao+""+(lng=="nodeJs"?" selected":"")+">NodeJs</option>";
 		main+="<option value=index.html?lng=python&licao="+licao+""+(lng=="python"?" selected":"")+">Python</option></select>";
 		if(licao<9)main+="&nbsp;<button onclick=\"location.href='index.html?lng="+lng+"&licao="+(parseInt(licao)+1)+"';\">></button>";
-		main+="<span id=voltar onclick=\"location='index.html?lng="+lng+"';\">voltar</span><span id=home onclick=\"location='index.html';\">home</span>";
+		main+="<span id=voltar onclick=\"location='index.html?lng="+lng+"';\">indice</span><span id=home onclick=\"location='index.html';\">home</span>";
 
 
 	}
